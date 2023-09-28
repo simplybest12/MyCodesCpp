@@ -1,109 +1,72 @@
-//{ Driver Code Starts
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-struct Node
-{
-    int data;
-    struct Node* next;
 
-    Node(int x){
-        data = x;
-        next = NULL;
-    }
-};
+struct Node{
+  int data;
+  struct Node *next;
+}*first=NULL;
 
-
-// } Driver Code Ends
-/*
-  Pairwise swap a linked list
-  The input list will have at least one element
-  node is defined as
-
-struct Node
-{
-    int data;
-    struct Node* next;
-
-    Node(int x){
-        data = x;
-        next = NULL;
-    }
-
-}*head;
-*/
-class Solution
-{
-    public:
-    Node* pairWiseSwap(struct Node* head)
-    {
-        struct Node *p,*q;
-        p=head;
-        q=NULL;
-        while(p!=NULL){
-            q=p;
-            p=p->next;
-            p->next=q->next;
-            q->next=p;
-        }
-        while(head!=NULL){
-            cout<<head->data<<" ";
-            head=head->next;
-        }
-
-    }
-};
-
-//{ Driver Code Starts.
-
-void printList(Node* node)
-{
-	while (node != NULL) {
-		cout << node->data <<" ";
-		node = node->next;
-	}
-	cout<<"\n";
+void create(int a[],int n){
+  struct Node *temp,*newnode;
+  first=new Node;
+  first->data=a[0];
+  first->next=NULL;
+  newnode=first;
+  for(int i=1;i<n;i++){
+    temp=new Node;
+    temp->data=a[i];
+    temp->next=NULL;
+    newnode->next=temp;
+    newnode=temp;
+  }
 }
 
-int main()
-{
-	int t;
-	cin>>t;
-	while(t--)
-	{
-		int n;
-		cin>>n;
-		int data;
-		cin>>data;
-		struct Node *head = new Node(data);
-		struct Node *tail = head;
-		map<Node*, int> mp;
-		mp[head] = head->data;
-		for (int i = 0; i<n-1; ++i)
-		{
-			cin>>data;
-			tail->next = new Node(data);
-			tail = tail->next;
-			mp[tail] = tail->data;
-		}
-		struct Node *failure = new Node(-1);
-		Solution ob;
-		head = ob.pairWiseSwap(head);
-		int flag = 0;
-		struct Node *temp = head;
-		while(temp){
-		    if(mp[temp] != temp->data){
-		        flag = 1;
-		        break;
-		    }
-		    temp = temp->next;
-		}
-		if(flag)
-		    printList(failure);
-		else
-		    printList(head);
-	}
-	return 0;
+void display(struct Node *first){
+  struct Node *p;
+  p=first;
+  while(p!=NULL){
+    cout<<p->data<<endl;
+    p=p->next;
+  }
+}
+Node mergesortedlist( Node list1, Node list2){
+  vector <int> a();
+  while(list1!=NULL){
+      a.pushback(list1->val);
+  }
+  while(list2!=NULL){
+      a.pushback(list2->val);
+  }
+  sort(a.begin(),a,end());
+
 }
 
-// } Driver Code Ends
+int main(){
+  int n;
+  cin>>n;
+  int l1[n];
+  for(int i=0;i<n;i++){
+    cin>>a[i];
+  }
+  create(a,n);
+  display(first);
+  int l2[n];
+  for(int i=0;i<n;i++){
+    cin>>a[i];
+  }
+  create(a,n);
+  display(first);
+
+
+
+
+
+
+
+
+
+
+
+
+}
