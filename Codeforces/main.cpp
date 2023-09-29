@@ -224,13 +224,16 @@ int binarySearch(int A[], int n, int key)
 
 // bad approach
 // having O(n2) TLE
-int solve(int arr[], int n)
-{
-  int high = n - 1;
-  int low = 0;
-  int mid = low + (high - low) / 2;
-  
-
+void solve(string s1 ,string s2 ,string s3){
+    string s4 = s1+s2;
+    sort(s4.begin() , s4.end());
+    sort(s3.begin(),s3.end());
+    if(s3==s4){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
 
 
 
@@ -247,12 +250,9 @@ int main(void)
   freopen("output.txt", "w", stdout);
 
 #endif
-  int n;
-  cin >> n;
-  int arr[n];
-  for (int i = 0; i < n; i++)
-  {
-    cin >> arr[i];
-  }
-  cout << solve(arr, n) << endl;
+  string s1,s2,s3;
+  cin>>s1;
+  cin>>s2;
+  cin>>s3;
+  solve(s1,s2,s3);
 }
