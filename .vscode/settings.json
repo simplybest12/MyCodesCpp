@@ -2,6 +2,8 @@
   "files.associations": {
     "algorithm": "cpp",
     "cmath": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "utility": "cpp",
+    "xstring": "cpp"
   }
 }
