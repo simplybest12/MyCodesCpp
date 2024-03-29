@@ -4,6 +4,7 @@
     "cmath": "cpp",
     "iostream": "cpp",
     "utility": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "unordered_map": "cpp"
   }
 }
