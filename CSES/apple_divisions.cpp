@@ -193,20 +193,38 @@ ll printKthBit(unsigned int n)
 }
 
 int main(void){
+      ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+
+#endif
   int n;
   std::cin >> n;
-  vi a(n);
+  vi a;
   for(int i=0;i<n;i++){
     ll x;
     cin>>x;
     a.push_back(x);
   }
-  ll p=accumulate(a.begin(),a.end(),0);
-  // cout<<p<<endl;
-  if(!p%2){
-    cout<<0<<endl;
+  sort(a.begin(),a.end());
+  ll ans1=0;
+  ll ans2=0;
+  int c=0;
+  int i=0,j=n-1;
+  while(i<j){
+    if(c%2){
+      ans1+=(a[j]+a[i]);
+    }else{
+      ans2+=(a[j]+a[i]);
+    }
+    i++,j--;
+    c++;
   }
-  else{
-    cout<<1<<endl;
+  if(n%2){
+    if(ans1<ans2) ans1+=a[n/2];
+    else ans2+=a[n/2];
   }
+  cout<<abs(ans1-ans2)<<endl;
 }

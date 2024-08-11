@@ -2,8 +2,10 @@
 using namespace std;
 #define ll long long
 struct Node{
+
   int data;
   struct Node *next;
+
 } *first=NULL;
 
 void display(struct Node *p){
@@ -22,7 +24,6 @@ void displayrec(struct Node *p){
 
 }
 void create(int a[],int n){
-  int i;
   struct Node *t,*last;
   first=new Node;
   first->data=a[0];
@@ -36,6 +37,30 @@ void create(int a[],int n){
     last=t;
   }
 }
+
+struct Node* removeHead(struct Node* head){
+  if(head == NULL) return head;
+  Node* temp = head;
+  head = head->next;
+  delete(temp); 
+}
+struct Node* removeTail(struct Node* head){
+  if(head == NULL) return NULL;
+  Node* temp = head;
+  Node* prev;
+  while(temp){
+    prev = temp;
+    temp = temp->next;
+  }
+  prev->next = NULL;
+  delete(temp);
+  return head;
+}
+
+
+
+
+
 struct Node *createl(struct Node *head,int size){
   int i,val;
   struct Node *temp,*newnode;
@@ -82,40 +107,5 @@ int deleten(struct Node *p,int pos){
 }
 
 int main(){
-  int t;
-  cin>>t;
-  while(t--){
-    int n;
-    cin>>n;
-    string str;
-    cin>>str;
-    bool flag=0;
-    ll x=0,y=0;
-    for(ll i=0;i<n;i++){
-      if(str[i]=='U'){
-        y++;
-      }
-      else if(str[i]=='D'){
-        y--;
-      }
-      else if(str[i]=='L'){
-        x--;
-      }
-      else if(str[i]=='R'){
-        x++;
-      }
-      if(x==1 && y==1){
-        flag=1;
-        break;
-      }
-    }
-    if(flag==1){
-      cout<<"YES"<<endl;
-    }
-    else{
-      cout<<"NO"<<endl;
-    }
-  }
-
-  return 0;
+  
 }

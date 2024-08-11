@@ -5,6 +5,14 @@
     "iostream": "cpp",
     "utility": "cpp",
     "xstring": "cpp",
-    "unordered_map": "cpp"
-  }
+    "unordered_map": "cpp",
+    "vector": "cpp",
+    "xutility": "cpp",
+    "xmemory": "cpp",
+    "ostream": "cpp",
+    "xiosbase": "cpp",
+    "deque": "cpp",
+    "list": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,14 +1,4 @@
-#include <iostream>
-#include <set>
-#include <map>
-#include <unordered_map>
-#include <string>
-#include <vector>
-#include <queue>
-#include <algorithm>
-#include <cstring>
-#include <climits>
-#include <cmath>
+#include <bits/stdc++.h>
 
 using namespace std;
 #define ASCII_SIZE 256
@@ -44,11 +34,12 @@ node *buildTree(node *root)
     int data;
     cout << "Enter the Data:" << endl;
     cin >> data;
-    root = new node(data);
+    
     if (data == -1)
     {
         return NULL;
     }
+    root = new node(data);
     cout << "Enter data for inserting in left of " << data << endl;
     root->left = buildTree(root->left);
     cout << "Enter data for inserting in right of " << data << endl;
@@ -56,6 +47,46 @@ node *buildTree(node *root)
 
     return root;
 }
+
+void inOrder(node *root){
+    if(root == NULL ) return;
+
+    inOrder(root->left);
+    cout<<(root->data)<<" ";
+
+    inOrder(root->right);
+
+}
+
+void preOrder(node *root){
+    if(root == NULL) return;
+
+    cout<<(root->data)<<" ";
+    preOrder(root->left);
+    preOrder(root->right);
+}           
+
+void postOrder(node *root){
+    if(root == NULL) return ;
+
+    postOrder(root->left);
+    postOrder(root->right);
+    cout<<(root->data)<<" ";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int height(node *root)
 {
@@ -168,6 +199,30 @@ void rightView(node *root,int level){
             
 }
 
+// void ancestors(node *root,vector<int>& v,int val){
+//     if(root == NULL) return;
+//     if(root -> data == val){
+//         return;
+//     }
+//     v.push_back(root->data);
+//     ancestors(root->left,v,4);
+//     v.pop_back();
+//     ancestors(root->right,v,4);
+
+// }
+
+node* LCA(node *root,int n1,int n2){
+    if(root == NULL) return NULL;
+    if(root->data == n1 || root->data == n2) return root;
+    node* left = LCA(root->left,n1,n2);
+    node *right = LCA(root->right,n1,n2);
+    if(left == NULL ) return right;
+    if(right == NULL) return left;
+    return root;
+
+    
+}
+
 int diameter_of_BST(node* root){
     if(root == NULL) return 0;
     //TLE O(n^2)
@@ -190,16 +245,25 @@ int diameter_of_BST(node* root){
 
 int main()
 {
+//         ios_base::sync_with_stdio(false);
+//     cin.tie(NULL);
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+
+// #endif
+
     node *root = NULL;
 
     // creating a tree
     root = buildTree(root);
 
-    // 5 1 2 -1 -1 4 3 -1 -1 6 -1 -1 7 -1 -1
-    int k = height(root);
-    int n = sizeofBT(root);
-    int mx = maximum(root);
-    int mn = minimum(root);
+    // 5 2 4 -1 1 7 -1 -1 6 -1 -1 -1 3 -1 -1
+    inOrder(root);
+    // int k = height(root);
+    // int n = sizeofBT(root);
+    // int mx = maximum(root);
+    // int mn = minimum(root);
     // cout << "Height of this tree is " << k << endl;
     // cout << "Size of this tree is " << n << endl;
     // cout << "Max element in the BST :" << maximum(root) << endl;
@@ -213,7 +277,15 @@ int main()
     // for(auto it:mp){
     //     cout<<it.first<<"->"<<it.second -> data<<endl;
     // }
-    cout<<diameter(root)<<endl;
+    // cout<<diameter(root)<<endl;
+    vector<int> v;
+
+    // ancestors(root,v,4);
+    // for(auto x:v)cout<<"ancestor: "<<x<<" ";
+
+    node * lca = LCA(root,3,4);
+
+    
 
     return 0;
 }

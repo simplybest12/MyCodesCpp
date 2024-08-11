@@ -1,0 +1,1 @@
+fun(it.first,it.second+1) - 1
